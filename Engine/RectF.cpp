@@ -19,7 +19,7 @@ RectF::RectF(Vec2 topLeft_in, float width, float height)
 	RectF(topLeft_in, Vec2(topLeft_in.x + width, topLeft_in.y + height));
 }
 
-RectF RectF::FromCenter(Vec2 center, float halfWidth, float halfHeight)
+RectF RectF::FromCenter(Vec2& center, float halfWidth, float halfHeight)
 {
 	Vec2 half(halfWidth, halfHeight);
 	return RectF(center - half, center + half);
