@@ -43,8 +43,7 @@ void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
 	ball.Update(dt);
-	//ball.doWallCollision(walls);
-
+	ball.doWallCollision(walls);
 }
 
 void Game::ComposeFrame()
