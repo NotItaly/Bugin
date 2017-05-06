@@ -7,7 +7,7 @@ Bricks::Bricks(const RectF & rect_in, Color c)
 {
 }
 
-void Bricks::Draw(Graphics& gfx)
+void Bricks::Draw(Graphics& gfx) const
 {
 	if (!destroyed)
 	{

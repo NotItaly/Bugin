@@ -57,7 +57,7 @@ bool Paddle::doBallCollision(Ball & b)
 			b.ReboundX();
 			return true;
 		}
-		else
+		else if(brect.bottom>rect.top && brect.top<rect.top)
 		{
 			b.ReboundY();
 			return true;

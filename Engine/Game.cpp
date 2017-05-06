@@ -83,7 +83,7 @@ void Game::UpdateModel()
 void Game::ComposeFrame()
 {
 	ball.Draw(gfx);
-	for (Bricks& b : bricks)
+	for (const Bricks& b : bricks)
 	{
 		b.Draw(gfx);
 	}
