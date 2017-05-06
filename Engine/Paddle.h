@@ -14,7 +14,7 @@ public:
 	void Draw(Graphics& gfx);
 	void Update(Keyboard& kbrd, float dt);
 	bool doBallCollision(Ball& ball);
-	bool doWallCollision(const RectF& walls);
+	void doWallCollision(const RectF& walls);
 	RectF GetRect()const;
 private:
 	Color WingColor = Colors::Red;

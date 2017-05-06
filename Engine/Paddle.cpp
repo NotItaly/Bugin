@@ -31,15 +31,42 @@ void Paddle::Update(Keyboard & kbrd, float dt)
 bool Paddle::doBallCollision(Ball & b)
 {
 	RectF rect = GetRect();
-	RectF bRect = b.GetRect();
-	if (rect.isOverLapping(bRect))
+	RectF brect = b.GetRect();
+	if (rect.isOverLapping(brect))
 	{
-		b.ReboundY();
+		if (brect.bottom > rect.top && brect.right > rect.left && brect.left<rect.left) //top left corner of paddle
+		{
+			b.ReboundX();
+			b.ReboundY();
+			return true;
+		}
+		else if (brect.bottom > rect.top && brect.left < rect.right && brect.right>rect.right) // top right corner of paddle
+		{
+			b.ReboundX();
+			b.ReboundY();
+			return true;
+		}
+		else if (brect.right > rect.left && brect.left<rect.left)
+		{
+			
+			b.ReboundX();
+			return true;
+		}
+		else if (brect.left < rect.right && brect.right>rect.right)
+		{
+			b.ReboundX();
+			return true;
+		}
+		else
+		{
+			b.ReboundY();
+			return true;
+		}
 	}
-	return false;
+	else return false;
 }
 
-bool Paddle::doWallCollision(const RectF & walls)
+void Paddle::doWallCollision(const RectF & walls)
 {
 	RectF rect = GetRect();
 	if (rect.left < walls.left)
@@ -50,7 +77,6 @@ bool Paddle::doWallCollision(const RectF & walls)
 	{
 		pos.x += walls.right - rect.right;
 	}
-	return false;
 }
 
 RectF Paddle::GetRect() const
