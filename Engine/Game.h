@@ -47,12 +47,18 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	static constexpr float bWidth = 40.0f;
+	static constexpr float bHeight = 24.0f;
+	static constexpr int nBricksAcross = 18;
+	static constexpr int nBricksDown = 4;
+	static constexpr int nBricks = nBricksAcross* nBricksDown;
 	FrameTimer ft;
-	Bricks brick;
+	Bricks bricks[nBricks];
 	Ball ball;
 	RectF walls;
 	Paddle pad;
 	Sound Sbrick;
 	Sound paddle;
+	Color colors[4] = { Colors::Red,Colors::Green,Colors::Blue,Colors::Cyan };
 	/********************************/
 };

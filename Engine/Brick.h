@@ -8,6 +8,7 @@
 class Bricks
 {
 public:
+	Bricks() = default;
 	Bricks(const RectF& rect_in, Color c);
 	void Draw(Graphics& gfx);
 	bool doBallCollsion(Ball& b);
