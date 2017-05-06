@@ -3,12 +3,14 @@
 #include "Graphics.h"
 #include "RectF.h"
 #include "Colors.h"
+#include "Ball.h"
 
 class Bricks
 {
 public:
 	Bricks(const RectF& rect_in, Color c);
 	void Draw(Graphics& gfx);
+	bool doBallCollsion(Ball& b);
 private:
 	RectF rect;
 	Color color;
