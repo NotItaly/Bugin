@@ -13,6 +13,7 @@ public:
 	void ReboundY();
 	bool doWallCollision(const RectF& walls);
 	RectF GetRect()const;
+	Vec2 GetCenter()const;
 private:
 	Vec2 pos;
 	Vec2 vel;

@@ -21,38 +21,12 @@ bool Bricks::doBallCollsion(Ball & b)
 	RectF brect = b.GetRect();
 	if (!destroyed && rect.isOverLapping(brect))
 	{
-		if (brect.right > rect.left && brect.left < rect.left && brect.top < rect.bottom)// bottom left corner
-		{
-		//	b.ReboundX();
-			b.ReboundY();
-		}
-		else if (brect.right > rect.left && brect.left < rect.left && brect.bottom < rect.top) // top left corner
-		{
-		//	b.ReboundX();
-			b.ReboundY();
-		}
-		else if (brect.left<rect.right &&brect.right>rect.right && brect.top < rect.bottom) // bottom right
-		{
-		//	b.ReboundX();
-			b.ReboundY();
-		}
-		else if (brect.left<rect.right &&brect.right>rect.right && brect.bottom < rect.top) // top right
-		{
-		//	b.ReboundX();
-			b.ReboundY();
-		}
-		else if (brect.right > rect.left && brect.left < rect.left) //checks if hit the left side of a brick
-		{
-			b.ReboundX();
-		}
-		else if (brect.left<rect.right &&brect.right>rect.right) // check if hit the right side of brick
-		{
-			b.ReboundX();
-		}
-		else
+		const Vec2 ballCenter = b.GetCenter();
+		if (ballCenter.x > rect.left && ballCenter.x < rect.right)
 		{
 			b.ReboundY();
 		}
+		else b.ReboundX();
 		destroyed = true;
 		return true;
 	}
