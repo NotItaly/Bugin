@@ -59,6 +59,5 @@ private:
 	Paddle pad;
 	Sound Sbrick;
 	Sound paddle;
-	Color colors[4] = { Colors::Red,Colors::Green,Colors::Blue,Colors::Cyan };
 	/********************************/
 };

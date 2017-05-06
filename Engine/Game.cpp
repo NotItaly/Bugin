@@ -32,13 +32,17 @@ Game::Game(MainWindow& wnd)
 	paddle(L"Sounds//arkpad.wav")
 {
 	int i = 0; //brick number counter;
+	Color colors[4] = { Colors::Red,Colors::Green,Colors::Blue,Colors::Cyan };
+
 	Vec2 topLeft(0.0f, 0.0f);
 	 
 		for (int y = 0; y < nBricksDown; y++)
 		{
+			Color c = colors[y];
 			for (int x = 0; x < nBricksAcross; x++)
 			{
-				bricks[i] = Bricks(RectF(topLeft, bWidth, bHeight), colors[y]);
+				bricks[i] = Bricks(RectF(
+					topLeft+Vec2(x*bWidth,y*bHeight), bWidth, bHeight), c);
 				i++;
 			}
 		}

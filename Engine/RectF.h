@@ -6,6 +6,7 @@
 class RectF
 {
 public:
+	RectF() = default;
 	RectF(float left_in, float right_in, float top_in, float bottom_in);
 	RectF(Vec2 topLeft_in, Vec2 bottomRight_in);
 	RectF(Vec2 topLeft_in, float width, float height);
