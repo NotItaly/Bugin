@@ -34,7 +34,7 @@ Game::Game(MainWindow& wnd)
 	int i = 0; //brick number counter;
 	Color colors[4] = { Colors::Red,Colors::Green,Colors::Blue,Colors::Cyan };
 
-	Vec2 topLeft(0.0f, 0.0f);
+	Vec2 topLeft(40.0f, 40.0f);
 	 
 		for (int y = 0; y < nBricksDown; y++)
 		{
@@ -42,7 +42,7 @@ Game::Game(MainWindow& wnd)
 			for (int x = 0; x < nBricksAcross; x++)
 			{
 				bricks[i] = Bricks(RectF(
-					topLeft+Vec2(x*bWidth,y*bHeight), bWidth, bHeight), c);
+					topLeft.x + (x*bWidth), topLeft.x + bWidth + (x*bWidth), topLeft.y + (y*bHeight), topLeft.y + bHeight + (y*bHeight)), c);
 				i++;
 			}
 		}
@@ -61,23 +61,24 @@ void Game::UpdateModel()
 	
 	const float dt = ft.Mark();
 	ball.Update(dt);
+
 	if (ball.doWallCollision(walls)) {
 		paddle.Play();
-	};
+	}
+
 	for (Bricks& b : bricks)
 	{
 		if (b.doBallCollsion(ball)) {
 			Sbrick.Play();
-		};
+		}
 	}
-
 
 	pad.Update(wnd.kbd,dt);
 	pad.doWallCollision(walls);
 	if (pad.doBallCollision(ball))
 	{
 		paddle.Play();
-	}; 
+	}
 }
 
 void Game::ComposeFrame()
@@ -89,3 +90,6 @@ void Game::ComposeFrame()
 	}
 	pad.Draw(gfx);
 }
+
+
+//

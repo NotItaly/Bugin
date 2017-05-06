@@ -9,12 +9,12 @@ RectF::RectF(float left_in, float right_in, float top_in, float bottom_in)
 {
 }
 
-RectF::RectF(Vec2 topLeft_in, Vec2 bottomRight_in)
+RectF::RectF(const Vec2& topLeft_in, const Vec2& bottomRight_in)
 {
 	RectF(topLeft_in.x, bottomRight_in.x, topLeft_in.y, bottomRight_in.y);
 }
 
-RectF::RectF(Vec2 topLeft_in, float width, float height)
+RectF::RectF(const Vec2& topLeft_in, float width, float height)
 {
 	RectF(topLeft_in, Vec2(topLeft_in.x + width, topLeft_in.y + height));
 }

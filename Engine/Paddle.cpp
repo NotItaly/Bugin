@@ -36,13 +36,13 @@ bool Paddle::doBallCollision(Ball & b)
 	{
 		if (brect.bottom > rect.top && brect.right > rect.left && brect.left<rect.left) //top left corner of paddle
 		{
-			b.ReboundX();
+			//b.ReboundX();
 			b.ReboundY();
 			return true;
 		}
 		else if (brect.bottom > rect.top && brect.left < rect.right && brect.right>rect.right) // top right corner of paddle
 		{
-			b.ReboundX();
+		//	b.ReboundX();
 			b.ReboundY();
 			return true;
 		}

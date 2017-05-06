@@ -11,7 +11,8 @@ void Bricks::Draw(Graphics& gfx) const
 {
 	if (!destroyed)
 	{
-		gfx.DrawRect(rect, color);
+		RectF Bordered = rect.GetExpanded(padding);
+		gfx.DrawRect(Bordered, color);
 	}
 }
 

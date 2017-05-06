@@ -22,7 +22,7 @@ private:
 	static constexpr float  halfwingWidth = 18.0f;
 	static constexpr float halfWidth = 50.0f;
 	static constexpr float halfHeight = 18.0f;
-	static constexpr float speed = 300.0f;
+	static constexpr float speed = 500.0f;
 	Vec2 pos;
 	
 };

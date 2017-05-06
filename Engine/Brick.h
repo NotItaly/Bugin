@@ -16,5 +16,5 @@ private:
 	RectF rect;
 	Color color;
 	bool destroyed = false;
-	static constexpr float padding = 2.0f;
+	static constexpr float padding = -2.0f;
 };
