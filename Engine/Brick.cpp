@@ -18,7 +18,7 @@ void Bricks::Draw(Graphics& gfx)
 bool Bricks::doBallCollsion(Ball & b)
 {
 	RectF brect = b.GetRect();
-	if (rect.isOverLapping(brect))
+	if (!destroyed && rect.isOverLapping(brect))
 	{
 		if (brect.right > rect.left && brect.left < rect.left) //checks if hit the left side of a brick
 		{

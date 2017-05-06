@@ -26,8 +26,9 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	brick(RectF(271.0f, 300.0f, 240.0f, 270.0f), Colors::Cyan),
-	ball(Vec2(70, 70), Vec2(200, 200)),
-	walls(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight))
+	ball(Vec2(70, 70), Vec2(500, 500)),
+	walls(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)),
+	pad(Vec2(400.0f,500.0f))
 {
 }
 
@@ -45,10 +46,16 @@ void Game::UpdateModel()
 	ball.Update(dt);
 	ball.doWallCollision(walls);
 	brick.doBallCollsion(ball);
+
+	pad.Update(wnd.kbd,dt);
+	pad.doWallCollision(walls);
+	pad.doBallCollision(ball);
 }
 
 void Game::ComposeFrame()
 {
 	ball.Draw(gfx);
 	brick.Draw(gfx);
+	pad.Draw(gfx);
+
 }
