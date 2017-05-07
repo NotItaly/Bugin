@@ -30,38 +30,29 @@ void Paddle::Update(Keyboard & kbrd, float dt)
 
 bool Paddle::doBallCollision(Ball & b)
 {
-	RectF rect = GetRect();
-	RectF brect = b.GetRect();
-	if (rect.isOverLapping(brect))
+	if (!isCoolDown)
 	{
-		if (brect.bottom > rect.top && brect.right > rect.left && brect.left<rect.left) //top left corner of paddle
+		RectF rect = GetRect();
+		RectF brect = b.GetRect();
+		const Vec2 ballCenter = b.GetCenter();
+		if (rect.isOverLapping(brect))
 		{
-			//b.ReboundX();
-			b.ReboundY();
+			if (std::signbit(b.GetVelocity().x) == std::signbit(b.GetCenter().x - pos.x))
+			{
+				b.ReboundY();
+			}
+			else if (ballCenter.x >= rect.left && ballCenter.x <= rect.right)
+			{
+				b.ReboundY();
+			}
+			else
+			{
+				b.ReboundX();
+			}
+			isCoolDown = true;
 			return true;
 		}
-		else if (brect.bottom > rect.top && brect.left < rect.right && brect.right>rect.right) // top right corner of paddle
-		{
-		//	b.ReboundX();
-			b.ReboundY();
-			return true;
-		}
-		else if (brect.right > rect.left && brect.left<rect.left)
-		{
-			
-			b.ReboundX();
-			return true;
-		}
-		else if (brect.left < rect.right && brect.right>rect.right)
-		{
-			b.ReboundX();
-			return true;
-		}
-		else if(brect.bottom>rect.top && brect.top<rect.top)
-		{
-			b.ReboundY();
-			return true;
-		}
+		return false;
 	}
 	else return false;
 }
@@ -82,5 +73,10 @@ void Paddle::doWallCollision(const RectF & walls)
 RectF Paddle::GetRect() const
 {
 	return RectF(RectF::FromCenter(pos,halfWidth,halfHeight));
+}
+
+void Paddle::ResetCoolDown()
+{
+	isCoolDown = false;
 }
 

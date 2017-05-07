@@ -16,6 +16,7 @@ public:
 	bool doBallCollision(Ball& ball);
 	void doWallCollision(const RectF& walls);
 	RectF GetRect()const;
+	void ResetCoolDown();
 private:
 	Color WingColor = Colors::Red;
 	Color color = Colors::White;
@@ -24,5 +25,6 @@ private:
 	static constexpr float halfHeight = 18.0f;
 	static constexpr float speed = 500.0f;
 	Vec2 pos;
+	bool isCoolDown = false;
 	
 };

@@ -11,7 +11,9 @@ public:
 	Bricks() = default;
 	Bricks(const RectF& rect_in, Color c);
 	void Draw(Graphics& gfx)const;
-	bool doBallCollsion(Ball& b);
+	bool isBallCollsion(const Ball& b)const;
+	void ExecuteBallCollision(Ball& b);
+	Vec2 GetCenter()const;
 private:
 	RectF rect;
 	Color color;
